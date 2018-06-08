@@ -14,7 +14,7 @@
  D -> Type L;D
       | epsilon
  A -> = E | epsilon 
- // L -> id, L | id; // Não está em LL(1), Então transformando L em LL(1) temos
+ 
  L -> id A L_
  L_ -> , L 
        | epsilon
@@ -93,6 +93,7 @@ void match(int t)
 
 void S()
 {
+  D();
   Function();
   S_();
 }

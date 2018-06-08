@@ -1,3 +1,4 @@
+int a;
 int a()
 {
   int a, b = 2;

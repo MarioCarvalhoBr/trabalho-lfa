@@ -3,9 +3,9 @@ A FAZER
 FAZENDO
         
 TESTANDO
-    * Operadores de incremento e decremento (++ e −−)
 
 FEITO
+    * Operadores de incremento e decremento (++ e −−)
     * Expressões aritméticas envolvendo operadores binários (− e /)
     * Operadores de atribuição (+ =, − =, ∗ =, / =)
             * sendo que algumas dessas alterações devem ser feitas no léxico 

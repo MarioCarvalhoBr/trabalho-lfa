@@ -27,11 +27,11 @@
 ## Para executar os casos de testes
 
 #### 1 º - Executar o comando make
- `` bash
-  make
- ``
+```bash
+  $ make
+ ```
 
  #### 2 º - Executar o parser
- `` bash
-  ./parser exemplo1.c
- ``
+ ```bash
+  $ ./parser exemplo1.c
+ ```
