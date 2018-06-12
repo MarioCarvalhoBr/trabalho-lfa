@@ -2,10 +2,10 @@
 
 ## Dados do trabalho
 #### Componentes
- * Ed
+ * Edvaldo Wassouf
  * Renato
  * Thiago
- * Mario
+ * Mario Carvalho
 #### Professor(a)
  * Edna
 #### Instituição
@@ -13,10 +13,6 @@
 
 
 ## A FAZER
-
- * Operadores de atribuição (+ =, − =, ∗ =, / =)
-   * sendo que algumas dessas alterações devem ser feitas no léxico 
-
 
 ## FAZENDO
 
@@ -26,7 +22,8 @@
  * Operadores de incremento e decremento (++ e −−)
  * Declaração de variáveis globais do tipo básico;
  * Expressões aritméticas envolvendo operadores binários (− e /)
-   
+ * Operadores de atribuição (+ =, − =, ∗ =, / =)
+   * sendo que algumas dessas alterações devem ser feitas no léxico 
 ## Para executar os casos de testes
 
 #### 1 º - Executar o comando make

@@ -42,6 +42,11 @@
 C_ ->   = E; 
       | ++;
       | --;
+      | += E ;
+      | -= E ;
+      | /= E ;
+      | *= E ;
+
  E -> TE'
  E'->   +TE' 
       | -TE'
@@ -56,7 +61,7 @@ C_ ->   = E;
       | num
       | ++ id
       | -- id
- F_  -> ++
+ F_  ->  ++
        | --
        | epsilon
 
@@ -299,6 +304,10 @@ void C(){
 C_ ->   = E; 
       | ++;
       | --;
+      | += E ;
+      | -= E ;
+      | /= E ;
+      | *= E ;
 */
 void C_(){
  if(lookahead == OP_ATRIB){
@@ -307,6 +316,22 @@ void C_(){
    match(PONTO_VIRG);
  }else if(lookahead == OP_PLUSPLUS){
    match(OP_PLUSPLUS);
+   match(PONTO_VIRG);
+ }else if(lookahead ==  OP_PLUS_ATRIB){
+   match(OP_PLUS_ATRIB);
+   E();
+   match(PONTO_VIRG);
+ }else if(lookahead == OP_MINUS_ATRIB){
+   match(OP_MINUS_ATRIB);
+   E();
+   match(PONTO_VIRG);
+ }else if(lookahead == OP_DIV_ATRIB){
+   match(OP_DIV_ATRIB);
+   E();
+   match(PONTO_VIRG);
+ }else if(lookahead == OP_MULT_ATRIB){
+   match(OP_MULT_ATRIB);
+   E();
    match(PONTO_VIRG);
  }else{ // Obrigado a fazer --;
    match(OP_MINUSMINUS);
