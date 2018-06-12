@@ -34,15 +34,23 @@
  
  B -> C B 
       | epsilon
- C -> id = E ; 
+
+ C ->   id C_
       | while (E) C 
       | { B }
+
+C_ ->   = E; 
+      | ++;
+      | --;
  E -> TE'
- E'-> +TE' 
+ E'->   +TE' 
+      | -TE'
       | epsilon
  T -> FT'
- T'-> *FT' 
+ T'->   * FT' 
+       | / FT'
       | epsilon
+
  F -> (E) 
       | id 
       | num
@@ -66,6 +74,7 @@ void S_();
 void Type();
 void B();
 void C();
+void C_();
 void E();
 void T();
 void F();
@@ -256,16 +265,16 @@ void B(){
   }
 }
 /* 
- C -> id = E ; 
+
+ C ->   id C_
       | while (E) C 
       | { B }
+
  */
 void C(){
   if(lookahead==ID){
     match(ID);
-    match(OP_ATRIB);
-    E();
-    match(PONTO_VIRG);
+    C_();
   }
   else if(lookahead==WHILE){
     match(WHILE);
@@ -280,6 +289,24 @@ void C(){
     match(FECHA_CHAVES);
   }
 }
+/*
+C_ ->   = E; 
+      | ++;
+      | --;
+*/
+void C_(){
+ if(lookahead == OP_ATRIB){
+   match(OP_ATRIB);
+   E();
+   match(PONTO_VIRG);
+ }else if(lookahead == OP_PLUSPLUS){
+   match(OP_PLUSPLUS);
+   match(PONTO_VIRG);
+ }else{ // Obrigado a fazer --;
+   match(OP_MINUSMINUS);
+   match(PONTO_VIRG);
+ }
+}
 
 void E(){
   T();
@@ -290,11 +317,22 @@ void T(){
   F();
   T_();
 }
+/*
+ E'->   +TE' 
+      | -TE'
+      | epsilon
+*/
 void E_(){
   if(lookahead==OP_ADIT){
     match(OP_ADIT);
     T();
     E_();
+  }else if(lookahead == OP_MINUS){
+    match(OP_MINUS);
+    T();
+    E_();
+  }else{
+    // epsilon
   }
 }
 void F(){
@@ -311,11 +349,22 @@ void F(){
       match(NUM);
   }
 }
+/*
+ T'->   * FT' 
+       | / FT'
+      | epsilon
+*/
 void T_(){
   if(lookahead==OP_MULT){
     match(OP_MULT);
     F();
     T_();
+  }else if(lookahead==OP_DIV){
+    match(OP_DIV);
+    F();
+    T_();
+  }else{
+    // epsilon
   }
 }
 

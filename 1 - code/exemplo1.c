@@ -26,7 +26,9 @@ void main()
   b = 3;
   while (a)
   {
+    c = ( a - b) * 7;
     c = (a + b) * 2;
+    c = (a + b) / 2;
     a = a + 1 + (b + (c + 1) * d);
     b = b * b;
   }
@@ -34,4 +36,7 @@ void main()
   while (b)
     a = 10;
   a = 10;
+
+  a++;
+  b--;
 }
