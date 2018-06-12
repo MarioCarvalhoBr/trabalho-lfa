@@ -52,8 +52,13 @@ C_ ->   = E;
       | epsilon
 
  F -> (E) 
-      | id 
+      | id F_
       | num
+      | ++ id
+      | -- id
+ F_  -> ++
+       | --
+       | epsilon
 
  A saida do analisador apresenta o total de linhas processadas e uma mensagem de erro ou sucesso. 
  Atualmente, nao ha controle sobre a coluna e a linha em que o erro foi encontrado.
@@ -78,6 +83,7 @@ void C_();
 void E();
 void T();
 void F();
+void F_();
 void E_();
 void T_();
 void D();
@@ -335,18 +341,43 @@ void E_(){
     // epsilon
   }
 }
+/*
+ F -> (E) 
+      | id F_
+      | num
+      | ++ id
+      | -- id
+*/
 void F(){
   if(lookahead==ABRE_PARENT){
     match(ABRE_PARENT);
     E();
     match(FECHA_PARENT);
-  }
-  else{
-    if(lookahead==ID){
+  }else if(lookahead==ID){
       match(ID);
-    }
-    else
+      F_();
+  }else if(lookahead==OP_PLUSPLUS){
+      match(OP_PLUSPLUS);
+      match(ID);
+  }else if(lookahead==OP_MINUSMINUS){
+      match(OP_MINUSMINUS);
+      match(ID);
+  }else{ // Obriga a ter um número
       match(NUM);
+  }
+}
+/*
+ F_  -> ++
+       | --
+       | epsilon
+*/
+void F_(){
+  if(lookahead == OP_PLUSPLUS){
+   match(OP_PLUSPLUS);
+  }else if(lookahead == OP_MINUSMINUS){
+   match(OP_MINUSMINUS);
+  }else{
+    //epsilon
   }
 }
 /*

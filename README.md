@@ -21,9 +21,9 @@
 ## FAZENDO
 
 ## TESTANDO
-* Operadores de incremento e decremento (++ e −−)
 
 ## FEITO
+ * Operadores de incremento e decremento (++ e −−)
  * Declaração de variáveis globais do tipo básico;
  * Expressões aritméticas envolvendo operadores binários (− e /)
    
